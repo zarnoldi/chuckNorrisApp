@@ -3,13 +3,17 @@ class UI {
          let ui = document.createElement('div'); 
          ui.innerHTML = `
          <h3>${data}</h3>
-         `; 
+         <a href="#" class="float-end delete-item">
+         <button type="button" class="btn-close" disabled aria-label="Close"></button>
+         </a>`;
+         ; 
          document.getElementById('output').appendChild(ui); 
      }
  }
 
-
 document.getElementById('categories').addEventListener('click', getCategoryData); 
+document.getElementById('output').addEventListener('click', deleteJoke)
+
 
 function getCategoryData(e) {
 
@@ -40,3 +44,9 @@ function getCategoryData(e) {
 e.preventDefault();    
 }
 
+function deleteJoke(e) {
+    if (e.target.classList.contains('delete-item')) {
+        e.target.parentElement.remove(); 
+    }
+
+}
